@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Write Story | Social Blog</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/" class="brand">SocialBlog</a>
+        <div class="nav-links">
+            <a href="/" class="btn btn-outline">Cancel</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="editor-box">
+            <h2 style="margin-bottom: 1.5rem;">Create a New Story</h2>
+            
+            <form id="create-form">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="post-title" class="form-control" placeholder="Enter an engaging title..." required>
+                </div>
+
+                <div class="form-group">
+                    <label>Cover Image</label>
+                    <input type="file" id="post-file" accept="image/*" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Categories</label>
+                    <select id="post-categories" class="form-control" multiple style="height: 100px;">
+                        <option disabled>Loading categories...</option>
+                    </select>
+                    <small style="color: #666;">Hold Ctrl/Cmd to select multiple</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Content</label>
+                    <div id="quill-editor" style="height: 300px; background: white;"></div>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <p id="form-msg" class="error-msg" style="margin-bottom: 1rem;"></p>
+                    <button type="submit" class="btn btn-primary" id="submit-btn">Publish Story</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/create.js"></script>
+</body>
+</html>

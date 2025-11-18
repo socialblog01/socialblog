@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Blog</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/" class="brand">SocialBlog</a>
+        <div class="nav-links">
+            <div id="nav-guest">
+                <a href="/login.html" class="btn btn-outline">Log In</a>
+            </div>
+            <div id="nav-user" class="hidden">
+                <span id="username-display" style="margin-right: 10px; font-weight: 500;"></span>
+                <a href="/create.html" class="btn btn-primary">Write Story</a>
+                <button onclick="logout()" class="btn btn-outline">Log Out</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" id="feed-container">
+        <div style="text-align: center; color: #666;">Loading stories...</div>
+    </main>
+
+    <script src="js/common.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>

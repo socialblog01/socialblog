@@ -1,0 +1,134 @@
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --bg: #f3f4f6;
+    --surface: #ffffff;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --danger: #ef4444;
+    --border: #e5e7eb;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* --- Navigation --- */
+.navbar { 
+    background: var(--surface); 
+    border-bottom: 1px solid var(--border); 
+    padding: 1rem 2rem; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    position: sticky; 
+    top: 0; 
+    z-index: 100; 
+}
+.brand { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; }
+.nav-links { display: flex; gap: 1rem; align-items: center; }
+
+/* --- Buttons --- */
+.btn { 
+    padding: 0.6rem 1.2rem; 
+    border-radius: 8px; 
+    font-weight: 600; 
+    cursor: pointer; 
+    border: none; 
+    font-size: 0.95rem; 
+    transition: all 0.2s ease; 
+    display: inline-block; 
+    text-align: center;
+}
+.btn-primary { background: var(--primary); color: white; box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2); }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+.btn-outline { border: 1px solid var(--border); background: white; color: var(--text); }
+.btn-outline:hover { background: #f9fafb; border-color: #d1d5db; }
+.btn-danger { background: var(--danger); color: white; }
+.btn-danger:hover { opacity: 0.9; }
+
+/* --- Layout & Grid --- */
+.container { 
+    max-width: 1200px; /* Increased width for desktop grid */
+    margin: 2rem auto; 
+    padding: 0 1.5rem; 
+}
+
+/* The Grid for Home Page */
+#feed-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Auto columns */
+    gap: 2rem;
+}
+
+/* Restrict width for Single Post & Editor so they are readable */
+#single-post-container, .editor-box {
+    max-width: 800px; 
+    margin: 0 auto; 
+}
+
+.hidden { display: none !important; }
+
+/* --- Cards & Forms --- */
+.auth-box, .editor-box { 
+    background: var(--surface); 
+    padding: 2.5rem; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+}
+
+/* Center Auth Box */
+.auth-wrapper { display: flex; justify-content: center; align-items: center; min-height: 80vh; }
+.auth-box { width: 100%; max-width: 400px; margin: 0 auto; }
+
+.form-group { margin-bottom: 1.25rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text); font-size: 0.9rem; }
+.form-control { 
+    width: 100%; 
+    padding: 0.75rem 1rem; 
+    border: 1px solid var(--border); 
+    border-radius: 8px; 
+    font-size: 1rem; 
+    transition: border-color 0.2s;
+    background: #f9fafb;
+}
+.form-control:focus { outline: none; border-color: var(--primary); background: white; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+.error-msg { color: var(--danger); font-size: 0.9rem; margin-top: 0.5rem; display: block; }
+
+/* --- Feed / Posts --- */
+.post-card { 
+    background: var(--surface); 
+    border-radius: 12px; 
+    overflow: hidden; 
+    border: 1px solid var(--border); 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+.post-card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1); }
+
+.post-img { width: 100%; height: 220px; object-fit: cover; }
+.post-content { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.post-meta { font-size: 0.75rem; color: var(--primary); margin-bottom: 0.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.post-title { font-size: 1.4rem; margin-bottom: 0.75rem; line-height: 1.3; color: #111827; font-weight: 700; }
+.post-body { color: #4b5563; margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.6; flex: 1; }
+.post-actions { border-top: 1px solid var(--border); padding: 1rem 1.5rem; display: flex; justify-content: flex-end; background: #f9fafb; }
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .navbar { flex-direction: column; padding: 1rem; gap: 1rem; }
+    .nav-links { width: 100%; justify-content: center; flex-wrap: wrap; gap: 0.5rem; }
+    .container { padding: 0 1rem; margin: 1.5rem auto; }
+    
+    /* On mobile, switch back to 1 column */
+    #feed-container { grid-template-columns: 1fr; }
+    
+    .post-img { height: 200px; }
+    .auth-box, .editor-box { padding: 1.5rem; }
+    .btn { width: 100%; margin-bottom: 0.5rem; }
+    
+    /* Exception: Keep card buttons normal size if preferred, or full width */
+    .post-actions .btn { width: auto; margin-bottom: 0; }
+}
